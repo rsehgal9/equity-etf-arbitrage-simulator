@@ -4,9 +4,9 @@ import numpy as np
 import yfinance as yf
 import matplotlib.pyplot as plt
 
-st.set_page_config(page_title="Equity Arbitrage Simulator V2", layout="wide")
+st.set_page_config(page_title="Equity & ETF Arbitrage Simulator", layout="wide")
 
-st.title("Equity Arbitrage Simulator V2")
+st.title("Equity & ETF Arbitrage Simulator")
 st.markdown("Pairs trading backtest with optional regime filtering based on rolling correlation and spread volatility.")
 
 # Sidebar inputs
