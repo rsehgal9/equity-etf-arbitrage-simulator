@@ -1,4 +1,4 @@
-# Equity Arbitrage Simulator
+# Equity & ETF Arbitrage Simulator
 
 A regime-aware statistical arbitrage simulator built in Python and Streamlit.
 
