@@ -1,76 +1,67 @@
-# Equity & ETF Arbitrage Simulator
+# Equity & ETF Statistical Arbitrage Simulator
 
-A simple, interactive trading simulator that finds pricing inefficiencies between related stocks and ETFs and tests whether those differences can be profitably traded.
-
----
-
-## 🧠 What This Project Does
-
-This project simulates a trading strategy that looks for **temporary mispricing between two related assets** (for example, Coca-Cola vs Pepsi, or two similar ETFs).
-
-When the prices move too far apart:
-- the strategy assumes they will move back together
-- it places a trade to profit from that “reversion”
-
-This type of strategy is commonly used in quantitative trading and is known as **statistical arbitrage**.
+A Python-based trading simulator that identifies and tests pricing inefficiencies between related equities and exchange-traded funds (ETFs) using a mean-reversion framework.
 
 ---
 
-## 💡 Example
+## Overview
 
-If two companies or ETFs usually move together:
+This project implements a statistical arbitrage strategy designed to capture temporary divergences in price between correlated assets. The model assumes that certain assets—such as companies within the same industry or ETFs tracking similar indices—tend to move together over time.
 
-- If one becomes unusually expensive → the model **sells it**
-- If one becomes unusually cheap → the model **buys it**
-
-When prices return to normal, the trade is closed for a profit.
+When the price relationship between two assets deviates significantly from its historical norm, the strategy enters a trade anticipating that the spread will revert.
 
 ---
 
-## ⚙️ Key Features
+## Strategy Logic
 
-- 📊 **Mean-Reversion Strategy**
-  - Uses statistical signals to detect when prices diverge from normal levels
+The simulator follows a structured process:
 
-- 🧠 **Regime Filter**
-  - Avoids trading when the relationship between assets becomes unstable
+1. **Spread Construction**  
+   Computes the log-price spread between two assets to measure relative mispricing.
 
-- 💸 **Transaction Cost Modeling**
-  - Simulates realistic trading by including costs
+2. **Signal Generation**  
+   Uses a rolling z-score to identify when the spread deviates from its historical mean.
 
-- 📈 **Performance Metrics**
-  - Tracks:
-    - Total return  
-    - Sharpe ratio (risk-adjusted return)  
-    - Max drawdown (risk)  
-    - Win rate  
+3. **Trade Execution**  
+   - Enters positions when deviations exceed predefined thresholds  
+   - Exits positions when the spread normalizes  
 
-- 🖥️ **Interactive Dashboard (Streamlit)**
-  - Visualizes:
-    - price movements  
-    - trading signals  
-    - portfolio performance  
+4. **Regime Filtering**  
+   Applies filters based on rolling correlation and spread volatility to avoid trading during unstable market conditions.
+
+5. **Performance Evaluation**  
+   Tracks key performance metrics including total return, Sharpe ratio, maximum drawdown, and win rate.
 
 ---
 
-## 🧪 Assets Tested
+## Key Features
 
-The model can be applied to:
-
-### Stocks
-- KO / PEP (consumer staples)
-- V / MA (financials)
-- XOM / CVX (energy)
-
-### ETFs
-- IVV / SPY (S&P 500)
-- QQQ / XLK (technology)
+- Mean-reversion strategy using statistical signals  
+- Regime-aware filtering to improve signal quality  
+- Transaction cost modeling for realistic simulation  
+- Interactive dashboard built with Streamlit  
+- Visualization of price series, signals, and portfolio performance  
 
 ---
 
-## 🚀 How to Run
+## Example Asset Pairs
+
+The model can be applied across multiple asset classes:
+
+**Equities**
+- KO / PEP  
+- V / MA  
+- XOM / CVX  
+
+**ETFs**
+- IVV / SPY  
+- QQQ / XLK  
+
+---
+
+## Installation and Usage
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/YOUR_USERNAME/equity-arbitrage-simulator.git
+git clone https://github.com/rsehgal9/equity-arbitrage-simulator.git
 cd equity-arbitrage-simulator
